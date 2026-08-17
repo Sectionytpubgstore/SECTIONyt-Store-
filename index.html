@@ -194,6 +194,22 @@
             </div>
         </section>
 
+        <!-- Add Review Section -->
+        <section id="add-review" style="margin-top: 60px; background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--gold);">
+            <h2 style="margin-bottom: 20px;">Add Your Review</h2>
+            <p style="text-align: center; color: var(--gray); font-size: 13px; margin-bottom: 20px;">Apna experience share karein, hum aapke review ko jald hi website par show karenge!</p>
+            <form id="reviewForm" style="max-width: 400px; margin: auto;">
+                <input type="text" id="revName" placeholder="Aapka Naam" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff;">
+                <select id="revStars" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff;">
+                    <option value="★★★★★">5 Stars (★★★★★)</option>
+                    <option value="★★★★">4 Stars (★★★★)</option>
+                    <option value="★★★">3 Stars (★★★)</option>
+                </select>
+                <textarea id="revComment" placeholder="Aapka Feedback..." required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; height: 80px;"></textarea>
+                <button type="button" onclick="sendReview()" style="width: 100%; padding: 12px; background: var(--gold); border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit Review via WhatsApp</button>
+            </form>
+        </section>
+
         <!-- Blog Section -->
         <section id="blog" style="margin-top: 60px;">
             <h2>Latest Gaming & Social Blogs</h2>
@@ -217,6 +233,21 @@
     </footer>
 
     <a href="https://api.whatsapp.com/send?phone=923291740304&text=Salam!" class="float-wa" target="_blank">💬</a>
+
+    <script>
+        function sendReview() {
+            var name = document.getElementById('revName').value;
+            var stars = document.getElementById('revStars').value;
+            var comment = document.getElementById('revComment').value;
+            
+            if(name && comment) {
+                var message = "New Review Submission:%0A%0A*Name:* " + name + "%0A*Rating:* " + stars + "%0A*Feedback:* " + comment;
+                window.open("https://api.whatsapp.com/send?phone=923291740304&text=" + message, "_blank");
+            } else {
+                alert("Please fill in all fields!");
+            }
+        }
+    </script>
 
 </body>
 </html>
